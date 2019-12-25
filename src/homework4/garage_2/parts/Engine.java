@@ -32,5 +32,6 @@ public class Engine extends Part{
                 "Наименование\t- %s\n" +
                 "Объем\t- %f\n" +
                 "Тип топлива\t- " + typeF, id, capacity);
+        System.out.println();
     }
 }

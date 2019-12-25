@@ -31,6 +31,7 @@ public class Wheels extends Part{
                 "Наименование\t- %s\n" +
                 "Радиус\t- %f\n" +
                 "Тип колес\t- " + typeW, id, radius);
+        System.out.println();
 
     }
 }

@@ -4,6 +4,7 @@ import homework4.garage_2.parts.*;
 
 public class Bmw extends Car {
    private final TypeOfKey key = TypeOfKey.KEY_BMW;//тип ключа
+   private final License license = License.B;//категория прав для вождения автомобилей данного класса
 
     //конструкторы
    public Bmw() {
@@ -63,7 +64,12 @@ public class Bmw extends Car {
 
     }// открывает BMW(проверка на ключ, при передаче без параметров, метод суперкласса выдает сообщение)
 
-
+    @Override
+    public void getData(){
+        super.getData();
+        System.out.println("Тип ключа\t- " + key +"\n" +
+                "Необходимая категория прав\t- " + license);
+    }//полная информация
 
 
 

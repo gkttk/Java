@@ -4,8 +4,8 @@ import homework4.garage_2.parts.*;
 
 
 public class Audi extends Car {
-   private final TypeOfKey key = TypeOfKey.KEY_AUDI;
-
+   private final TypeOfKey key = TypeOfKey.KEY_AUDI;//тип ключа
+   private final License license = License.B;//категория прав для вождения автомобилей данного класса
    //конструкторы
    public Audi() {
        super("Audi",4);
@@ -59,6 +59,13 @@ public class Audi extends Car {
         }
 
     }//открывает BMW(проверка на ключ, при передаче без параметров, метод суперкласса выдает сообщение)
+
+    @Override
+    public void getData(){
+       super.getData();
+        System.out.println("Тип ключа\t- " + key +"\n" +
+                "Необходимая категория прав\t- " + license);
+    }//полная информация
 
 
 }
