@@ -1,29 +1,27 @@
 package homework4.garage_2;
 
-import homework4.garage_2.api.ICar;
-import homework4.garage_2.cars.*;
-import homework4.garage_2.enums.*;
+import homework4.garage_2.Person.Driver;
+import homework4.garage_2.Person.api.IDriver;
+import homework4.garage_2.cars.car.Audi;
+import homework4.garage_2.cars.api.ITransport;
+import homework4.garage_2.parts.*;
+import homework4.garage_2.parts.api.engine.FuelType;
+import homework4.garage_2.parts.api.wheels.TypeWheels;
+
 
 public class GarageMain {
     public static void main(String[] args) {
-        ICar car1 = new Mercedes();//"стоковый" Мерседес без колес и двигателя
-        car1.go();//нельзя ехать без колес
-        car1.changeWheels();//ставим стандартные для всех колеса
-        car1.go();//нужно завести автомобиль
-        car1.start();//чтобы завести автомобиль нужно попасть внутрь
-        car1.open();//необходим ключ
-        car1.open(TypeOfKey.KEY_BMW);//ключ от БМВ не подходит Мерседесу
-        car1.open(TypeOfKey.KEY_MERCEDES);//дверь открыта
-        car1.start();//у Мерседеса все еще нет двигателя, завести не получится
-        car1.changeEngine();//устанавливаем стандартный для всех двигатель
-        car1.start();//нет бензина
-        car1.refuel();//заправляемся...
-        car1.start();//автомобиль завелся
-        car1.go();//поехали
-        car1.stop();//остановились и заглушили мотор
-        car1.go();//нужно снова завести автомобиль
-        car1.start();//нужна дозаправка
-        car1.getData();//получение информации о car1
+        ITransport car1 = new Audi("audi1", new Engine("Двигатель1", 225, FuelType.ELECTRICITY), new Wheels("sdfsf", 12, 2, TypeWheels.WINTER), new Lock("123"));
+
+        car1.changeWheels(new Wheels("sdfsf", 12, 4, TypeWheels.WINTER));
+
+       IDriver driver = new Driver("Kirill", 'B', new Key("1233"), new Key("321"));
+       driver.accelerator(car1);
+        driver.seatToTransport(car1);
+        driver.accelerator(car1);
+        car1.stop();
+
+
 
     }
 }
