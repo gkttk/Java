@@ -12,7 +12,9 @@ public class Freightliner extends ATrucks {
 
 
 
-    public Freightliner(String model, IEngine engine, IWheels wheels, ILock lock) {
+    public Freightliner(String model, double maxTanks, IEngine engine, IWheels wheels, ILock lock) {
+        this.currentFuelLevel = maxTanks;
+        this.maxTanks = maxTanks;
         this.model = model;
         this.engine = engine;
         this.lock = lock;

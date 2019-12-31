@@ -17,11 +17,14 @@ public interface ITransport {
     IEngine getEngine();
     char getLicense();
     void getData();
-
+    double getCurrentFuelLevel();
     void refuel();
     void openDoor();
     boolean getDoorCondition();
-    void tryToStart();
-
-
+    boolean tryToStart();
+    int getNumberOfPeopleInside();
+    boolean consumption(double effort);
+    int getTraveled();
+    void setTraveled();
+    void setNumberOfPeopleInside(int numberOfPeople);
 }

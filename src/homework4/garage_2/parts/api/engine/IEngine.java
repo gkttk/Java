@@ -9,7 +9,7 @@ public interface IEngine {
     String getEngineId();
     double getEngineCapacity();
     FuelType getFuelType();
-
+    double getBasicConsumption();
 
     void getEngineData();
 

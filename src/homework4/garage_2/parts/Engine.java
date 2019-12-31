@@ -11,6 +11,7 @@ public class Engine implements IEngine {
     private FuelType typeFuel;
 
     private boolean isOn = false;
+    private final double basicConsumption = 5;
 
 
 
@@ -80,5 +81,10 @@ public class Engine implements IEngine {
     public void getEngineData() {
         System.out.println("\nИнформация по двигателю:\nНаименование - " + id + "\nОбъем - " + capacity +
                 "\nТип двигателя - " + typeFuel.toString(typeFuel));
+    }
+
+    @Override
+    public double getBasicConsumption() {
+        return basicConsumption;
     }
 }

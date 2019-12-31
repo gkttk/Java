@@ -13,7 +13,15 @@ public abstract class ATransport implements ITransport {
     private boolean isFull = false;
     private boolean isDoorOpen = false;
 
+    protected double maxTanks;
+    protected double currentFuelLevel;
+    private int traveled = 0;
+     private int numberOfPeopleInside = 0;
 
+@Override
+public void setNumberOfPeopleInside(int numberOfPeople){
+    numberOfPeopleInside = numberOfPeople;
+}
 
     @Override
     public void go() {
@@ -97,36 +105,71 @@ public abstract class ATransport implements ITransport {
    }
 
     @Override
-    public void tryToStart(){
+    public boolean tryToStart(){
         if(!lock.getLockCondition()){
             System.out.println("Сначала откройте замок");
-            return;
+            return false;
         }
         if(!isDoorOpen){
             System.out.println("Сначала откройте дверь");
-            return;
+            return false;
         }
         if(engine == null){
             System.out.println("В автомобиле нет двигателя");
-            return;
+            return false;
         }
         if(!isFull){
             System.out.println("Необходимо заправить/зарядить автомобиль");
-            return;
+            return false;
         }
         if(!engine.getEngineCondition()){
             System.out.println("Заведите автомобиль");
-            return;
+            return false;
         }
         if(wheels == null){
             System.out.println("У автомобиля нет колес");
-            return;
+            return false;
         }
         System.out.println("Автомобиль готов к поездке");
+        return true;
 
     }
 
+    @Override
+
+    public double getCurrentFuelLevel(){
+        return currentFuelLevel;
     }
+
+    @Override
+    public int getNumberOfPeopleInside() {
+        return numberOfPeopleInside;
+    }
+
+    public boolean consumption(double effort){
+        if(currentFuelLevel > effort*numberOfPeopleInside*getEngine().getBasicConsumption()){
+            currentFuelLevel -= effort*numberOfPeopleInside*getEngine().getBasicConsumption();
+            traveled++;
+            return true;
+        }
+        else{
+            return false;
+        }
+
+
+
+    }
+
+   public int getTraveled(){
+        return traveled;
+   };
+
+    public void setTraveled(){
+        this.traveled = 0;
+    }
+
+
+}
 
 
 
