@@ -11,7 +11,7 @@ public interface ITransport {
     void changeWheels(IWheels newWheels);
     void changeEngine(IEngine newEngine);
     void changeLock(ILock newLock);
-
+    void setIsFull();
     int getNumberOfWheels();
     ILock getLock();
     IEngine getEngine();

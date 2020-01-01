@@ -23,6 +23,11 @@ public void setNumberOfPeopleInside(int numberOfPeople){
     numberOfPeopleInside = numberOfPeople;
 }
 
+
+@Override
+public void setIsFull(){
+    this.isFull = false;
+}
     @Override
     public void go() {
         if(engine != null && wheels != null){

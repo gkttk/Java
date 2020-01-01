@@ -67,6 +67,7 @@ public class Driver implements IDriver {
                     effort = rand.nextDouble();
                 }
                 System.out.println("Топливо закончилось");
+                transport.setIsFull();
                 transport.getEngine().switchOff();
                 transport.stop();
                 System.out.println("Проехано " + transport.getTraveled() + " км");
