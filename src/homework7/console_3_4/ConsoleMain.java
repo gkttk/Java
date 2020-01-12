@@ -1,4 +1,4 @@
-package homework7.console;
+package homework7.console_3_4;
 
 import java.util.*;
 
