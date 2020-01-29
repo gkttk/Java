@@ -10,6 +10,6 @@ public interface IChat {
     void addMessage(Message message);
     Set<User> getUsersInChat();
     List<Message> getChatMessages();
-    int getChatID();
+    double getChatID();
 
 }

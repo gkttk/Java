@@ -10,17 +10,23 @@ import java.util.*;
 public class Chat implements IChat, Serializable {
 
 
-    private int chatID = 0;
+    private final double chatID;
     private final Set<User> usersInChat = new HashSet<>();
     private final List<Message> chatMessages = new LinkedList<>();
 
     public Chat(User user1, User user2) {
-        chatID++;
+        if(user1 == null || user2 == null){
+            throw new NullPointerException("Недостаточно пользователей для создания чата");
+        }
+        chatID = Math.random();
         usersInChat.add(user1);
         usersInChat.add(user2);
+        for(User user: usersInChat){
+            user.getUserChats().add(this);
+        }
     }
 
-    public int getChatID() {
+    public double getChatID() {
         return chatID;
     }
 
@@ -54,4 +60,24 @@ public class Chat implements IChat, Serializable {
             chatMessages.add(message);
         }
     }
+
+    public boolean equals(Object obj) {
+        if(obj == null){
+            return false;
+        }
+        if(!(obj instanceof Chat)){
+            return false;
+        }
+        Chat obj1 = (Chat)obj;
+        if(this.getChatID() == obj1.getChatID()){
+            return true;
+        }
+        return false;
+    }
+
+    public int hashCode(){
+        return (int)(3*getChatID() + (getChatMessages().size()+22));
+    }
+
+
 }

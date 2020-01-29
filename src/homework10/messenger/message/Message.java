@@ -3,21 +3,13 @@ package homework10.messenger.message;
 import homework10.messenger.message.api.MessageType;
 import homework10.messenger.User;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Message<T> {
-
-    public User getUser() {
-        return user;
-    }
+public class Message<T> implements Serializable {
 
     private User user;
     MessageType type;
-
-    public T getData() {
-        return data;
-    }
-
     private T data;
     private Date date;
 
@@ -26,5 +18,17 @@ public class Message<T> {
         this.type = type;
         this.data = data;
         date = new Date();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public String toString(){
+        return user.getName() + " написал \t" + data + " \t" + date;
     }
 }
