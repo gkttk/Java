@@ -2,12 +2,15 @@ package homework10.messenger.registration;
 
 import homework10.messenger.User;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Registration {
     private static int id = 0;
-    private static final Map<String, User> registeredUsers = new HashMap<>();
+    private static  Map<String, User> registeredUsers = new HashMap<>();
 
     public static User createNewUser(String name, String password) {
         if (Validation.checkName(name)) {
@@ -32,6 +35,14 @@ public class Registration {
         }
         registeredUsers.put(user.getName(), user);
         return user;
+    }
+
+    public static void serializeRegistration(ObjectOutputStream ous) throws IOException {
+        ous.writeObject(registeredUsers);
+    }
+
+    public static void deSerializeRegistration(ObjectInputStream ois) throws IOException, ClassNotFoundException {
+       registeredUsers = (Map<String, User>)ois.readObject();
     }
 
 }
