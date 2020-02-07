@@ -3,13 +3,11 @@ package homework10.messenger.saver;
 import homework10.messenger.chat.api.IChat;
 import homework10.messenger.message.Message;
 import homework10.messenger.saver.api.ISaverChat;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
 public class SaverMessagesWithToString implements ISaverChat {
-
 
     @Override
     public void saveChat(IChat chat) {

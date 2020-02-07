@@ -21,9 +21,6 @@ public class Chat implements IChat, Serializable {
         chatID = Math.random();
         usersInChat.add(user1);
         usersInChat.add(user2);
-        for(User user: usersInChat){
-            user.getUserChats().add(this);
-        }
     }
 
     public double getChatID() {
