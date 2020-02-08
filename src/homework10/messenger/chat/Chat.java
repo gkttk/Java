@@ -3,12 +3,10 @@ package homework10.messenger.chat;
 import homework10.messenger.chat.api.IChat;
 import homework10.messenger.message.Message;
 import homework10.messenger.User;
-
 import java.io.Serializable;
 import java.util.*;
 
 public class Chat implements IChat, Serializable {
-
 
     private final double chatID;
     private final Set<User> usersInChat = new HashSet<>();

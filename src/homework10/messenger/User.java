@@ -1,11 +1,9 @@
 package homework10.messenger;
 
-import homework10.messenger.chat.Chat;
 import java.io.*;
-import java.util.Set;
+
 
 public class User implements Serializable {
-
 
     private int id;
     private String name;
@@ -22,11 +20,9 @@ public class User implements Serializable {
         return id;
     }
 
-
     public String getName() {
         return name;
     }
-
 
     public boolean equals(Object obj) {
         if(obj == null){

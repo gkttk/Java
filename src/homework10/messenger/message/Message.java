@@ -2,7 +2,6 @@ package homework10.messenger.message;
 
 import homework10.messenger.message.api.MessageType;
 import homework10.messenger.User;
-
 import java.io.Serializable;
 import java.util.Date;
 

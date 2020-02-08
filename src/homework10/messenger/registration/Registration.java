@@ -2,15 +2,13 @@ package homework10.messenger.registration;
 
 import homework10.messenger.User;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Registration {
     private static int id = 0;
-    private static  Map<String, User> registeredUsers = new HashMap<>();
+    private static Map<String, User> registeredUsers = new HashMap<>();
 
     public static User createNewUser(String name, String password) {
         if (Validation.checkName(name)) {
@@ -37,12 +35,28 @@ public class Registration {
         return user;
     }
 
-    public static void serializeRegistration(ObjectOutputStream ous) throws IOException {
-        ous.writeObject(registeredUsers);
+    public static void serializeRegistration() {
+        Map<String, User> copyRegisteredUsers = registeredUsers;
+        try (FileOutputStream fos = new FileOutputStream("D:\\GitHub\\Kirill_Sviridov(Java)\\src\\homework10\\messenger\\registration\\registrationFiles\\registeredUsers.bin");
+             ObjectOutputStream ous = new ObjectOutputStream(fos)) {
+
+            ous.writeObject(copyRegisteredUsers);
+        } catch (IOException e) {
+            System.out.println("Ошибка ввода-вывода");
+        }
+
     }
 
-    public static void deSerializeRegistration(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-       registeredUsers = (Map<String, User>)ois.readObject();
+    public static void deSerializeRegistration(){
+        try (FileInputStream fis = new FileInputStream("D:\\GitHub\\Kirill_Sviridov(Java)\\src\\homework10\\messenger\\registration\\registrationFiles\\registeredUsers.bin");
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            Map<String, User> copyRegisteredUser = (Map<String, User>) ois.readObject();
+            registeredUsers = copyRegisteredUser;
+        } catch (ClassNotFoundException e) {
+            System.out.println("Класс не найден");
+        } catch (IOException e) {
+            System.out.println("Ошибка ввода-вывода");
+        }
     }
 
 }
