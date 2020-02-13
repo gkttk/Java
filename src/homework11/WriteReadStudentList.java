@@ -29,6 +29,7 @@ public class WriteReadStudentList {
         }//catch
         finally {
             System.out.println("Прочитано " + file.getName());
+
         }
         return null;
     }
